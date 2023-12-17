@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cost Estimation</title>
+    <link rel="icon" type="image/x-icon" href="images/dev.png">
+    <link rel="stylesheet" href="custom-font/fonts.css" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <!-- Bootsnav -->
+        <link rel="stylesheet" href="css/bootsnav.css">
+        <!-- Fancybox -->
+        <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />	
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="css/custom.css" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   
+    <style>
+      #piechart {
+          min-height:300px;
+       }
+    </style>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-image: white;
+            background-size: cover;
+        }
+        .bg{
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(69, 64, 64, 0.34);
+        }
+        .bg-1{
+            background-color: rgba(255, 255, 255, 0.373);
+            width: 80%;
+            height: 95%;
+            position: relative;
+            left: 10%;
+            top: 20px;
+            border-radius: 25px;
+        }
+        .logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo img{
+            width: 130px;
+        }
+        .output{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .output h1{
+            font-size: 45px;
+        }
+        .amount{
+            display: flex;
+            flex-direction: column;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+            right: 80px;
+        }
+        .amount label{
+            padding-bottom: 14px;
+        }
+        .pie{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Top Navbar -->
+        <div class="top_nav">
+            <div class="container">
+                <ul class="list-inline info" style="position: relative; right: 150px;">
+                    <li><a href="#"><span style="padding-right: 7px;" class="fa fa-phone"></span>9790012034</a></li>
+                    <li><a href="#"><span style="padding-right: 7px;" class="fa fa-envelope"></span>Devhome.inc@gmail.com</a></li>
+                    <!-- <li><a href="#"><span class="fa fa-clock-o"></span> Mon - Sat 9:00 - 19:00</a></li> -->
+                </ul>
+                <ul class="list-inline social_icon" style="position: relative; left: 150px;">
+                    <li><a href=""><span class="fa fa-facebook"></span></a></li>
+                    <li><a href=""><span class="fa fa-twitter"></span></a></li>
+                    <li><a href=""><span class="fa fa-instagram"></span></a></li>
+                    <li><a href=""><span class="fa fa-linkedin"></span></a></li>
+                    <li><a href=""><span class="fa fa-youtube"></span></a></li>
+                </ul>			
+            </div>
+        </div><!-- Top Navbar end -->
+
+        <!-- Navbar -->
+        <nav class="navbar bootsnav">
+            <!-- Top Search -->
+            <div class="top-search">
+                <div class="container">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="position: relative; left: 150px;">
+                <!-- Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Header Navigation -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- <a class="navbar-brand" href=""><img class="logo" src="images/dev.png" height="100px"></a> -->
+                </div>
+                <!-- Navigation -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav menu">
+                        <li><a href="">Home</a></li>          
+                        <li><a href="#services">Services</a></li>          
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact_form">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>   
+        </nav><!-- Navbar end -->
+    </header>
+    <div class="bg">
+        <div class="bg-1">
+            <header>
+                <div class="logo">
+                    <img src="images/dev.png" alt="">
+                    <h2>Dev Home</h2>
+                </div>
+            </header>
+            <section>
+                <div class="output">
+                    <h1>Cost Estimation</h1>
+                    <div class="amount">
+                        <label for="">Construction Cost: <span id = "abcd" th:text="${total}"></span></label>
+                        <label for="">Subsidy Amount: <span th:text="${subsidy}" ></span></label>
+                        <label for="">Total Amount: <span th:text="${final}"></span></label>
+                    </div>
+                </div>
+            </section>
+            <div align="center">
+                <div id="piechart"></div>
+                </div>
+            </div>
+    </div>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+let tot = document.getElementById("abcd").innerHTML;
+console.log(tot);
+        function drawChart() {
+            
+          var data = google.visualization.arrayToDataTable([
+            ['Crash Type', tot],
+            ['PreConstruction Works            :' + Math.ceil(tot*0.03),     tot*0.03],
+            ['Foundation and flooring concrete :' + Math.ceil(tot*0.15),      tot*0.15],
+            ['Wall Plastering                  :'+ Math.ceil(tot*0.12),  tot*0.12],
+            ['Superstructure(incl. Sunshades, roofing) :'+ Math.ceil(tot*0.14), tot*0.14],
+            ['Ceiling Plastering               :' + Math.ceil(tot*0.2),    tot*0.20],
+            ['Painting and putty               :' + Math.ceil(tot *0.18),   tot*0.18],
+            ['Carpentering works               :' + Math.ceil(tot*0.1),    tot*0.10],
+            ['Electricals and Plumbing         :' + Math.ceil(tot*0.06),    tot*0.06],
+            ['Miscellaneous                    :' + Math.ceil(tot*0.02),    tot*0.02]
+          ]);
+  
+          var options = {
+            pieSliceText: 'Single Vehicle',
+            slices: {  0: {color: '#f7b15b', offset: 0.1},   
+                          1: {color: '#ffca71'},
+                          2: {color: '#be7f29'},
+                          3: {color: '#9f6407'},
+                          4: {color: '#7c4600'},
+                          5: {color: '#5d2d00'},              
+                }, 
+  
+             backgroundColor: '',
+             chartArea: {left:30, top:50, width:'80%', height:'90%'},
+          };
+  
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
+        }
+  
+      </script>
+</body>
+</html>

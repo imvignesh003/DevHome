@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Estimation</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .home{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .home-1 img{
+            position: relative;
+            left: 15px;
+            bottom: 20px;
+        }
+        .home-2 img{
+            position: relative;
+            left: 130px;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header style="font-family: sans-serif;">
+        <div class="top_nav">
+            <div class="head" style="display: flex; align-items: center; justify-content: space-between; background-color: #FFCB0F; height: 45px;">
+                <ul style="display: flex;list-style: none;">
+                    <li><a href="#" style="display: flex; align-items: center; padding-right: 7px; text-decoration: none; color: black; padding-right: 30px;"><img style="width: 25px; padding-right: 7px;" src="images/icons/icons8-phone-24.png" alt=""><span style="font-family: 'futura_ltbook', sans-serif; color: #222;">9790012034</span></a></li>
+                    <li><a href="#" style="display: flex; align-items: center; padding-right: 7px; text-decoration: none; color: black;"><img style="width: 25px; padding-right: 7px;" src="images/icons/icons8-envelope-50.png" alt=""><span style="color: #222">Devhome.inc@gmail.com</span></a></li>
+                </ul>
+                <ul style="display: flex;list-style: none; padding-right: 50px;">
+                    <li><a href=""><img style="width: 25px; padding-right: 7px;" src="images/icons/icons8-facebook-30.png" alt=""></a></li>
+                    <li><a href=""><img style="width: 25px; padding-right: 7px;" src="images/icons/icons8-twitter-30.png" alt=""></a></li>
+                    <li><a href=""><img style="width: 25px; padding-right: 7px;" src="images/icons/icons8-instagram-old-32.png" alt=""></a></li>
+                    <li><a href=""><img style="width: 25px; padding-right: 7px;" src="images/icons/icons8-linkedin-32.png" alt=""></a></li>
+                    <li><a href=""><img style="width: 25px; padding-right: 7px;" src="images/icons/icons8-youtube-50.png" alt=""></a></li>
+                </ul>			
+            </div>
+        </div>
+        <div class="nav" style="background-color: #A9A9A9; padding: 12px 0; display: flex; width: 100%;">
+                <div id="navbar-menu" style="width: 98%;">
+                    <ul class="nav navbar-nav menu" style="display: flex; justify-content: right; list-style: none;">
+                        <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="">Home</a></li>          
+                        <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="#services">Services</a></li>          
+                        <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="#about">About Us</a></li>
+                        <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="#contact_form">Contact Us</a></li>
+                        <li><a href=""><img style="width: 25px; padding-left: 25px;" src="images/icons/icons8-search-50.png" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>   
+        </div>
+    </header>
+    <div class="bg">
+    <div class="home">
+        <div class="home-1">
+            
+        </div>
+        <div class="home-2">
+            <img src="images/dev.png" width="35%" alt="">
+        </div>
+        <div class="home-1">
+
+        </div>
+    </div>
+    <style>
+        .bg{
+            height: 100vh;
+            background-color: rgba(69, 64, 64, 0.34);
+        }
+        .te{
+            background-color: rgba(255, 255, 255, 0.573);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #484848;
+            width: 40%;
+            border-radius: 25px;
+            padding: 5% 0;
+            font-family: sans-serif;
+            position: relative;
+            left: 28%;
+        }
+        .te h2{
+            font-size: 40px;
+        }
+        .date{
+            display: flex;
+            align-items: center;
+        }
+        .date p{
+            font-size: 14px;
+            padding-right: 15px;
+        }
+        .date input{
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            width: 150px;
+            height: 35px;
+            text-align: center;
+        }
+        .cal{
+            border: none;
+            outline: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            margin-top: 15px;
+            position: relative;
+            left: 30%;
+        }
+    </style>
+    <div class="te">
+        <h2>Time Estimation</h2>
+        <form action="/timecalculate">
+        <div class="date">
+            <p>Start Date</p>
+            <input type="date" name="date">
+        </div>
+        <input class="cal" type="submit" value="Calculate">
+    </form>
+    </div>
+</div>
+</body>
+</html>
