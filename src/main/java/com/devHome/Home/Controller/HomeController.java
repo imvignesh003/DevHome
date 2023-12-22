@@ -2,15 +2,17 @@ package com.devHome.Home.Controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 
 /**
@@ -19,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
     
+    private int budget;
+    private int area;
     @RequestMapping("/")    
     public String home(){
-        return "index.html";
+        return "Home.html";
     }
 
     @RequestMapping("/estimation")
@@ -34,8 +38,10 @@ public class HomeController {
     public String calc(
                         @RequestParam String quality,
                         @RequestParam String sqftString,
+                        @RequestParam int bhk,
                         @RequestParam String floor,
                         @RequestParam boolean woodwork,
+                        @RequestParam String date,
                         @RequestParam String state,
                         @RequestParam boolean subsidy,
                         @RequestParam(required = false) String incomeString,
@@ -43,8 +49,9 @@ public class HomeController {
                         @RequestParam(required = false) String tenureString,
                         @RequestParam(required = false) boolean puccaHouse,
                         Model model) {
+                            this.area = Integer.parseInt(sqftString);
         int sqft = Integer.parseInt(sqftString);
-        System.out.println("Quality: "+quality + " Sqft: "+sqft + " Floor: "+floor + " Woodwork: "+woodwork  + " State: "+state + " Subsidy: "+subsidy + " Income: "+incomeString + " Amount: "+amountString + " Tenure: "+tenureString + " Pucca House: "+puccaHouse);
+        System.out.println("Quality: "+quality + " Sqft: "+sqft + " Floor: "+floor +"BHK:"+bhk + " Woodwork: "+woodwork  + " State: "+state + " Subsidy: "+subsidy + " Income: "+incomeString + " Amount: "+amountString + " Tenure: "+tenureString + " Pucca House: "+puccaHouse);
         double inr = 0;
         final String loadedCategory = "Loaded";
         final String economyCategory = "Economy";
@@ -77,14 +84,61 @@ public class HomeController {
         double labour = inr * (20/100.0);
         double total = (inr + supervisor + labour)*sqft;
         System.out.println(total);
+        this.budget = (int)total;
         double sub = 0;
         if(subsidy){
             sub = calculate(Double.parseDouble(incomeString), Double.parseDouble(amountString), Integer.parseInt(tenureString), puccaHouse);
             System.out.println(sub);
         }   
+                
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+        LocalDate dat = LocalDate.parse(date);
+        String d = dat.format(formatter);
+        System.out.println(d);
+        LocalDate[][] dates = new LocalDate[17][2];
+        dates[0][0] = dat;
+        dates[0][1] = dat.plusDays(10);
+        dates[1][0] = dates[0][1].plusDays(1);
+        dates[1][1] = dates[1][0].plusDays(7);
+        dates[2][0] = dates[1][1].plusDays(1);
+        dates[2][1] = dates[2][0].plusDays(30);
+        dates[3][0] = dates[2][1].plusDays(1);
+        dates[3][1] = dates[3][0].plusDays(20);
+        dates[4][0] = dates[3][1].plusDays(1);
+        dates[4][1] = dates[4][0].plusDays(14);
+        dates[5][0] = dates[4][1].plusDays(1);
+        dates[5][1] = dates[5][0].plusDays(3);
+        dates[6][0] = dates[5][1].plusDays(1);
+        dates[6][1] = dates[6][0].plusDays(7);
+        dates[7][0] = dates[6][1].plusDays(1);
+        dates[7][1] = dates[7][0].plusDays(14); 
+        dates[8][0] = dates[7][1].plusDays(1);
+        dates[8][1] = dates[8][0].plusDays(10);
+        dates[9][0] = dates[8][1].plusDays(1);
+        dates[9][1] = dates[9][0].plusDays(16);
+        dates[10][0] = dates[9][1].plusDays(1);
+        dates[10][1] = dates[10][0].plusDays(20);
+        dates[11][0] = dates[10][1].plusDays(1);
+        dates[11][1] = dates[11][0].plusDays(13);
+        dates[12][0] = dates[11][1].plusDays(1);
+        dates[12][1] = dates[12][0].plusDays(23);
+        dates[13][0] = dates[12][1].plusDays(1);
+        dates[13][1] = dates[13][0].plusDays(9);
+        dates[14][0] = dates[13][1].plusDays(1);
+        dates[14][1] = dates[14][0].plusDays(9);
+        dates[15][0] = dates[14][1].plusDays(1);
+        dates[15][1] = dates[15][0].plusDays(9);
+        dates[16][0] = dates[15][1].plusDays(1);
+
+        model.addAttribute("dates", dates);
         model.addAttribute("total", total);
         model.addAttribute("subsidy", sub==0 || !subsidy?"Not Eligible":sub);
         model.addAttribute("final", sub == 0?total:total-sub);
+        model.addAttribute("hall", total*0.4);
+        model.addAttribute("bedroom", total*0.3);
+        model.addAttribute("kitchen", total*0.2);
+        model.addAttribute("bathroom", total*0.1);
+        model.addAttribute("bhk", bhk);
         return "output.html";
     }
 
@@ -190,76 +244,14 @@ public class HomeController {
         return "time.html";
     }
 
-    @RequestMapping("/timecalculate")
-    public String tcalc(@RequestParam String date, Model model){
-        
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
-        LocalDate dat = LocalDate.parse(date);
-        String d = dat.format(formatter);
-        System.out.println(d);
-        LocalDate[][] dates = new LocalDate[17][2];
-        dates[0][0] = dat;
-        dates[0][1] = dat.plusDays(10);
-        dates[1][0] = dates[0][1].plusDays(1);
-        dates[1][1] = dates[1][0].plusDays(7);
-        dates[2][0] = dates[1][1].plusDays(1);
-        dates[2][1] = dates[2][0].plusDays(30);
-        dates[3][0] = dates[2][1].plusDays(1);
-        dates[3][1] = dates[3][0].plusDays(20);
-        dates[4][0] = dates[3][1].plusDays(1);
-        dates[4][1] = dates[4][0].plusDays(14);
-        dates[5][0] = dates[4][1].plusDays(1);
-        dates[5][1] = dates[5][0].plusDays(3);
-        dates[6][0] = dates[5][1].plusDays(1);
-        dates[6][1] = dates[6][0].plusDays(7);
-        dates[7][0] = dates[6][1].plusDays(1);
-        dates[7][1] = dates[7][0].plusDays(14); 
-        dates[8][0] = dates[7][1].plusDays(1);
-        dates[8][1] = dates[8][0].plusDays(10);
-        dates[9][0] = dates[8][1].plusDays(1);
-        dates[9][1] = dates[9][0].plusDays(16);
-        dates[10][0] = dates[9][1].plusDays(1);
-        dates[10][1] = dates[10][0].plusDays(20);
-        dates[11][0] = dates[10][1].plusDays(1);
-        dates[11][1] = dates[11][0].plusDays(13);
-        dates[12][0] = dates[11][1].plusDays(1);
-        dates[12][1] = dates[12][0].plusDays(23);
-        dates[13][0] = dates[12][1].plusDays(1);
-        dates[13][1] = dates[13][0].plusDays(9);
-        dates[14][0] = dates[13][1].plusDays(1);
-        dates[14][1] = dates[14][0].plusDays(9);
-        dates[15][0] = dates[14][1].plusDays(1);
-        dates[15][1] = dates[15][0].plusDays(9);
-        dates[16][0] = dates[15][1].plusDays(1);
-
-        model.addAttribute("dates", dates);
-        return "time-output.html";
-    }
-    
+   
     
     
     @RequestMapping("/mldashboard")
-    public ResponseEntity<List<String>> mldash() {
-        // ...
-
-        List<String> pred = new ArrayList<String>();
-        // DataSource source = new DataSource("C:/Users/DELL/Downloads/esan.arff");
-        // Instances data = source.getDataSet();
-
-        // // Create the J48 classifier
-        // J48 j48 = new J48();
-
-        // // Train the classifier
-        // j48.buildClassifier(data);
-
-        // // Evaluate the classifier
-        // Evaluation eval = new Evaluation(data);
-        // eval.evaluateModel(j48, data);
-
-        // // Print the results
-        // System.out.println(eval.toSummaryString());
- 
-        return new ResponseEntity<List<String>>(pred, HttpStatus.OK);
+    public String mldash(Model model) {
+        model.addAttribute("budget",budget);
+        model.addAttribute("area",area);
+        return "ml.html";
     }
     
 

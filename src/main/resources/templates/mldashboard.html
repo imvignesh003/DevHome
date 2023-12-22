@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cost Estimation</title>
+    <link rel="icon" type="image/x-icon" href="images/dev.png">
+    <link rel="stylesheet" href="custom-font/fonts.css" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <!-- Bootsnav -->
+        <link rel="stylesheet" href="css/bootsnav.css">
+        <!-- Fancybox -->
+        <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />	
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="css/custom.css" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   
+</head>
+<body>
+<div class="container">
+    <br>
+    <h2>You can Prefer</h2>
+    <form id="costForm" align="center">
+        <div class="form-group">
+            <label for="budget">Budget:<span id="budget" th:text="${budget}"></span></label>
+        </div>
+        <div class="form-group">
+            <label for="area">Area:<span id="area" th:text="${area}"></span></label>
+        </div>
+    </form>
+</div>
+<p id = "output" >
+
+</p>
+<script>
+    const budget = document.getElementById('budget').value;
+    const area = document.getElementById('area').value;
+//     (async () => {
+//   const rawResponse = await fetch('http://127.0.0.1:5000/predict', {
+//     method: 'POST',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({"budget":1200000,"area":1200})
+//   });
+//   const content = await rawResponse.json();
+//   document.getElementById('output').innerHTML = rawResponse.body;
+//   console.log(rawResponse.body);
+// })();
+
+
+const out = document.getElementById('output');
+var str;
+fetch('http://127.0.0.1:5000/predict', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ "budget":1200000,"area":1200 })
+}).then(response => response.json())
+    .then(response => {
+        console.log(JSON.stringify(response));
+        // Store the response in a variable
+        str = JSON.stringify(response);
+        // Update the UI with the response
+        out.innerHTML = str;
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+        // Handle errors here if needed
+    });
+</script>
+</body>
+</html>

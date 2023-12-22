@@ -137,7 +137,7 @@
         <div class="nav" style="background-color: #A9A9A9; padding: 12px 0; display: flex; width: 100%;">
                 <div id="navbar-menu" style="width: 98%;">
                     <ul class="nav navbar-nav menu" style="display: flex; justify-content: right; list-style: none;">
-                        <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="">Home</a></li>          
+                        <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="/">Home</a></li>          
                         <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="#services">Services</a></li>          
                         <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="#about">About Us</a></li>
                         <li><a style="text-decoration: none; color: white; padding-left: 25px;" href="#contact_form">Contact Us</a></li>
@@ -166,7 +166,7 @@
             </div>
             <form th:action="@{/calculate}">
                 <div >
-                        <label><span>Construction Category (*) </span></label> &nbsp;&nbsp;
+                        <label><span>Construction Category </span></label> &nbsp;&nbsp;
                         <input type="radio" name="quality" value="Loaded"  />Loaded
                         <input type="radio" name="quality" value="Economy"  />Economy
                         <input type="radio" name="quality" value="Premium"  />Premium
@@ -175,11 +175,19 @@
                         <input type="radio" name="floor" value="Tiles"  />Tiles
                         <input type="radio" name="floor" value="Granites"  />Granite
                         <input type="radio" name="floor" value="Marble"  />Marble<br/><br/>
-                        <label><span>Plywood Work(*) </span></label> &nbsp;&nbsp;
+                        <label><span>Plywood Work </span></label> &nbsp;&nbsp;
                         <input type="radio" name="woodwork" value="Yes"  />Yes
                         <input type="radio" name="woodwork" value="No"  />No<br/><br/>
-                        <label >Construction Area(*) </label>
+                        <label >Construction Area </label>
                         <input type="text" name="sqftString" maxlength="9" Placeholder="Land Area in sqft" value=""/><label>&nbsp;&nbsp;(sqft)</label><br/><br/>
+                        <label>BHK</label>
+                        <select class="select" id="bhk" name="bhk" style='font-size: 14px;'>
+                            <option value="">--Select BHK--</option>
+                            <option value='1'>1 BHK</option>
+                            <option value='2'>2 BHK</option>
+                            <option value='3'>3 BHK</option>
+                        </select>
+                        <br/><br/>
                 </div>
                 <div>
                     <div class="container"> 
@@ -193,6 +201,11 @@
                                 <option value='Telangana'>Telangana</option>
                             </select>
                     </div>
+                </div>
+                <br>
+                <div class="date">
+                    <label>Start Date : </label>
+                    <input type="date" name="date">
                 </div>
                 <br>
                 <div class="sq">

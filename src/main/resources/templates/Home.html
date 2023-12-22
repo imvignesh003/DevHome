@@ -1,92 +1,326 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevHome</title>
-  <style>
-    body{
-        margin: 0;
-        padding: 0;
-        background-image: url(images/home.jpg);
-        background-repeat: no-repeat;
-        background-position: -350px 10px;
-        background-size: 120%;
-    }
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Dev Home</title>
+        <link rel="icon" type="image/x-icon" href="images/dev.png">
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="custom-font/fonts.css" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <!-- Bootsnav -->
+        <link rel="stylesheet" href="css/bootsnav.css">
+        <!-- Fancybox -->
+        <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />	
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="css/custom.css" />
+    </head>
+    <body>
+        <!-- Preloader -->
+        <div id="loading">
+            <div id="loading-center">
+                <div id="loading-center-absolute">
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                    <div class="object"></div>
+                </div>
+            </div>
+        </div>
+        <!--End off Preloader -->
+        <!-- Header -->
+        <header>
+            <!-- Top Navbar -->
+            <div class="top_nav">
+                <div class="container">
+                    <ul class="list-inline info" style="position: relative; right: 150px;">
+                        <li><a href="#"><span style="padding-right: 7px;" class="fa fa-phone"></span>9790012034</a></li>
+                        <li><a href="#"><span style="padding-right: 7px;" class="fa fa-envelope"></span>devhomeinc@gmail.com</a></li>
+                        <!-- <li><a href="#"><span class="fa fa-clock-o"></span> Mon - Sat 9:00 - 19:00</a></li> -->
+                    </ul>
+                    <ul class="list-inline social_icon" style="position: relative; left: 150px;">
+                        <li><a href=""><span class="fa fa-facebook"></span></a></li>
+                        <li><a href=""><span class="fa fa-twitter"></span></a></li>
+                        <li><a href=""><span class="fa fa-instagram"></span></a></li>
+                        <li><a href=""><span class="fa fa-linkedin"></span></a></li>
+                        <li><a href=""><span class="fa fa-youtube"></span></a></li>
+                    </ul>			
+                </div>
+            </div><!-- Top Navbar end -->
+            <!-- Navbar -->
+            <nav class="navbar bootsnav">
+                <!-- Top Search -->
+                <div class="top-search">
+                    <div class="container">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="position: relative; left: 150px;">
+                    <!-- Atribute Navigation -->
+                    <div class="attr-nav">
+                        <ul>
+                            <!-- <li class="search"><a href="#"><i class="fa fa-search"></i></a></li> -->
+                        </ul>
+                    </div>
+                    <!-- Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <!-- <a class="navbar-brand" href=""><img class="logo" src="images/dev.png" height="100px"></a> -->
+                    </div>
+                    <!-- Navigation -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav menu">
+                            <li><a href="">HOME</a></li>          
+                            <li><a href="Estimator.html">COST</a></li>          
+                            <li><a href="time.html">TIME</a></li>
+                            <li><a href="suggestions.html">SUGGESTIONS</a></li>
+                        </ul>
+                    </div>
+                </div>   
+            </nav><!-- Navbar end -->
+        </header><!-- Header end -->
+        <section id="home" class="home">
+            <!-- Carousel -->
+            <div id="carousel" class="carousel slide" style="width: 98.9vw;" data-ride="carousel">
+                <!-- Carousel-inner -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="images/slider_img.jpg" alt="Construction">
+                        <div class="overlay">
+                            <div class="carousel-caption">
+                                <h3>Dev Home</h3>
+                                <h1>Cost & Time Estimation</h1>
+                                <h1 class="second_heading">Precision & Priced</h1>
+                                <p>Where bricks meet budgets and time aligns with ambition,
+                                    Our meticulous estimates forge a sturdy foundation,
+                                    Crafting dreams into reality, saving both cost and time,
+                                    Construction excellence built on accurate foresight.</p>                      
+                            </div>					
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/slider_img2.jpg" alt="Construction">
+                        <div class="overlay">
+                            <div class="carousel-caption">
+                                <h3>Dev Home</h3>
+                                <h1>AR Visualization</h1>
+                                <h1 class="second_heading">Visual & Build</h1>
+                                <p>Step into the Future of Construction:  
+                                    Where Augmented Reality Transforms Blueprints into Reality.  
+                                    Layer by layer, our AR technology shapes the Build of Tomorrow,  
+                                    Crafting Visionary Structures with Precision and Ingenuity.</p>                                
+                            </div>					
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/slider_img3.jpg" alt="Construction">
+                        <div class="overlay">
+                            <div class="carousel-caption">
+                                <h3>Dev Home</h3>
+                                <h1>User Interactive</h1>
+                                <h1 class="second_heading">Suggestions</h1>
+                                <p>From Complex Blueprints to Real-Time Estimates,  
+                                    Our Machine Learning Algorithms Pioneer Accuracy,  
+                                    Redesigning Construction Economics, One Calculation at a Time.  
+                                    Where Innovation and Efficiency Merge for Smarter Building Costs.</p>
+                            </div>					
+                        </div>
+                    </div>
+                </div><!-- Carousel-inner end -->
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div><!-- Carousel end-->
+        </section>
+        <section id="services" style="padding-bottom: 50px;">
+            <div class="container">
+                <h2>OUR SERVICES</h2>
+                <center><div style="display: flex; width: 100%; padding-left: 150px;">
+                    <center>
+                        <div class="cost" style="display: flex; flex-direction: column; width: 100%;">
+                            <div class="col-md-4" style="width: 50%;">
+                                <div class="service_item">
+                                   <center><a href="/estimation"><img src="images/COST_ESTIMATION__1_-removebg-preview.png" style="width: 250px; position: relative; left: 30px; border-radius: 25px; background-color: white; box-shadow:rgba(0, 0, 0, 0.316) 5px 8px 7px;" alt="as"></a></center> 
+                                    <h3 style="padding-left: 55PX;">Cost Estimation</h3>
+                                    <p>The user Interactive Dashboard for Calculate the expence you need to build your dream House</p>
+                                </div>
+                            </div>
+                    </center>
+                    
 
-    .home{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .home-1 img{
-            position: relative;
-            left: 15px;
-            bottom: 20px;
-        }
-        .home-2 img{
-            position: relative;
-            left: 130px;
-        }
-        .bg-2{
-          position: relative;
-          top: 500px;
-          width: 100vw;
-          height: 400px;
-        }
-        .bg-2 img{
-          width: 100%;
-        }
-        .bg-3{
-          position: relative;
-          top: 800px;
-          width: 100vw;
-          height: 800px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
 
-        }
-        .bg-3 .img{
-          width: 100%;
-        }
-        .buttons{
-          position: relative;
-          right: 450px;
-          top: 80px;
-        }
-        .ce{
-            background-color: rgba(7, 37, 89, 0.5);
-            border-radius: 25px;
-            padding: 15px 120px;
-        }
-  </style>
-</head>
-<body>
-  <div class="home">
-      <div class="home-1">
-          <img src="images/menu black.png" width="70%" alt="">
-      </div>
-      <div class="home-2">
-          <img src="images/dev.png" width="35%" alt="">
-      </div>
-      <div class="home-1">
-        
-      </div>
-  </div>
-  <!-- <div class="bg-2">
-    <img src="images/Bg-2.jpg" alt="">
-  </div> -->
-  <div class="bg-3">
-    <img class="img" src="images/Bg-3.jpg" alt="">
-    <div class="buttons">
-      <div class="ce" onclick="window.location.href='/estimation'">
-        <img src="images/COST_ESTIMATION__1_-removebg-preview.png" alt="">
-      </div><br><br>
-      <div class="ce" onclick="window.location.href='/arvirtual'">
-        <img src="images/COST_ESTIMATION__2_-removebg-preview.png" alt="">
-      </div>
-    </div>
-  </div>
-</body>
+                        <!-- <div class="col-md-4" style="width: 70%; padding-top: 60px;">
+                            <div class="service_item">
+                                <a href="/arvirtual"><img src="images/COST_ESTIMATION__2_-removebg-preview.png" style="width: 250px; position: relative; left: 30px; border-radius: 25px; background-color: white; box-shadow:rgba(0, 0, 0, 0.316) 5px 8px 7px;" alt="wsd"></a>
+                                <h3 style="padding-left: 55PX;">AR Visualization</h3>
+                                <p>Experience your Dream Home virtually using our Moble App</p>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="sug" style="display: flex; flex-direction: column; width: 100%;">
+                        <!-- <div class="col-md-4" style="width: 70%;">
+                            <div class="service_item">
+                                <a href="/mldashboard"><img src="images/Suggestion_icon.png" style="width: 200px; position: relative; left: 30px; border-radius: 25px; background-color: white; box-shadow:rgba(0, 0, 0, 0.316) 5px 8px 7px;" alt="asd"></a>
+                                <h3 style="padding-left: 55PX;">Suggestions</h3>
+                                <p>Have a great Suggesessions from our pretrained Machine Learning Model to get optimized solution for your dream house</p>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-md-4" style="width: 70%; padding-top: 60px;">
+                            <div class="service_item">
+                                <a href="/time"><img src="images/Time_Estimation.png" style="width: 200px; position: relative; left: 30px; border-radius: 25px; background-color: white; box-shadow:rgba(0, 0, 0, 0.316) 5px 8px 7px;" alt="asd"></a>
+                                <h3 style="padding-left: 55PX;">Time Estimation</h3>
+                                <p>Estimate a approximate prediction on completion of your dream construction</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div></center>
+                
+        </section>
+        <!-- About -->
+        <section id="about">
+            <div class="container about_bg">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="about_content">
+                            <h2>Welcome to Dev Home</h2>
+                            <h3>Visit your Dream House!</h3>
+                            <p>Visualize your Dream home with a help of AR Technology </p>
+                            <p>DevHome revolutionizes housing with cutting-edge AR integration, envisioning futuristic residences. Experience immersive previews, accurate cost estimates and construction timelines, mitigating dissatisfaction by bridging the gap between desired and actual structures. Embrace a new era in housing, where AR transforms expectations into tangible reality.</p>
+                            <!-- <a  class="btn know_btn">know more</a> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-lg-offset-1">
+                        <div class="about_banner">
+                            <img src="images/man.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- About end -->
+        <!-- Why us -->
+        <section id="why_us">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="head_title">
+                            <h2>WHY CHOOSE Dev Home?</h2>
+                            <!-- <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-leaf"></span>
+                            <h4>Financial Clarity</h4>
+                            <p>Knowing exactly how much your home construction will cost is like creating a clear budget for your dream home.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-futbol-o"></span>
+                            <h4>Engaging Experience</h4>
+                            <p>Imagine being able to see a detailed preview of your future home before it's built, like a sneak peek or a virtual tour.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-group"></span>
+                            <h4>Informed Decision-Making</h4>
+                            <p>Getting helpful advice about design and construction choices is like having a knowledgeable friend to guide you through important decisions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-line-chart"></span>
+                            <h4>Efficiency and Precision</h4>
+                            <p>Imagine avoiding mistakes during construction and using just the right amount of materials like putting together a perfect puzzle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container footer_top">
+                <div class="row" style="display: flex; justify-content: space-between;">
+                    <div class="col-lg-4 col-sm-7">
+                        <div class="footer_item">
+                            <h4 style="position: relative; left: 70px;">About Dev Home</h4>
+                            <img class="logo" src="images/Dev home(white).png" style="width: 150px; position: relative; bottom: 30px; left: 80px;" alt="Construction" />
+                            <p style="position: relative; bottom: 40px;">DevHome revolutionizes housing with cutting-edge AR integration, envisioning futuristic residences. Experience immersive previews, accurate cost estimates and construction timelines, mitigating dissatisfaction by bridging the gap between desired and actual structures. Embrace a new era in housing, where AR transforms expectations into tangible reality.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-7">
+                        <div class="footer_item">
+                            <h4>Latest post</h4>
+                            <ul class="list-unstyled post">
+                                <li><a href=""><span class="date">18 <small>DEC</small></span></a></li>
+                                <li><a href=""><span class="date">19 <small>DEC</small></span></a></li>
+                                <li><a href=""><span class="date">20 <small>DEC</small></span></a></li>
+                                <li><a href=""><span class="date">21 <small>DEC</small></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-5">
+                        <div class="footer_item">
+                            <h4>Contact us</h4>
+                            <ul class="list-unstyled footer_contact">
+                                <li><a href=""><span class="fa fa-map-marker"></span>Coimbatore,Tamilnadu</a></li>
+                                <li><a href=""><span class="fa fa-envelope"></span></a>devhomeinc@gmail.com</li>
+                                <li><a href=""><span class="fa fa-mobile"></span><p>+91 9790012034</p></a></li>
+                            </ul>
+                            <ul class="list-inline footer_social_icon" style="position: relative; bottom: 20px;">
+                                <li><a href=""><span class="fa fa-facebook"></span></a></li>
+                                <li><a href=""><span class="fa fa-twitter"></span></a></li>
+                                <li><a href=""><span class="fa fa-youtube"></span></a></li>
+                                <li><a href=""><span class="fa fa-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Footer top end -->
+            <!-- Footer bottom -->
+            <div class="footer_bottom text-center">
+                <p class="wow fadeInRight">                    
+                </p>
+            </div><!-- Footer bottom end -->
+        </footer><!-- Footer end -->
+        <!-- JavaScript -->
+        <script src="js/jquery-1.12.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Bootsnav js -->
+        <script src="js/bootsnav.js"></script>
+        <!-- JS Implementing Plugins -->
+        <script src="js/isotope.js"></script>
+        <script src="js/isotope-active.js"></script>
+        <script src="js/jquery.fancybox.js?v=2.1.5"></script>
+        <script src="js/jquery.scrollUp.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>	
 </html>

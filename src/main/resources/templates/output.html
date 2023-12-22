@@ -34,16 +34,17 @@
         .bg{
             width: 100vw;
             height: 100vh;
-            background-color: rgba(69, 64, 64, 0.34);
+            
         }
         .bg-1{
-            background-color: rgba(255, 255, 255, 0.373);
             width: 80%;
-            height: 95%;
+            height: 180%;
             position: relative;
             left: 10%;
-            top: 20px;
+            top: 50px;
+            bottom: 190px;
             border-radius: 25px;
+            
         }
         .logo{
             display: flex;
@@ -128,7 +129,7 @@
                 <!-- Navigation -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav menu">
-                        <li><a href="">Home</a></li>          
+                        <li><a href="/">Home</a></li>          
                         <li><a href="#services">Services</a></li>          
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#contact_form">Contact Us</a></li>
@@ -142,16 +143,21 @@
             <header>
                 <div class="logo">
                     <img src="images/dev.png" alt="">
-                    <h2>Dev Home</h2>
+                    <h2 style="top: 50px;">Dev Home</h2>
                 </div>
             </header>
             <section>
                 <div class="output">
-                    <h1>Cost Estimation</h1>
-                    <div class="amount">
+                    <h1 style="color: rgb(0, 0, 0);">Cost Estimation</h1>
+                    <br>
+                    <div class="amount" style="color: aliceblue; color: black;">
                         <label for="">Construction Cost: <span id = "abcd" th:text="${total}"></span></label>
                         <label for="">Subsidy Amount: <span th:text="${subsidy}" ></span></label>
                         <label for="">Total Amount: <span th:text="${final}"></span></label>
+                        <label for="">Hall:  <span th:text="${hall}"></span></label>
+                        <label for="">Bedroom(<span th:text="${bhk}"></span>):  <span th:text="${bedroom}"></span></label>
+                        <label for="">Kitchen:  <span th:text="${kitchen}"></span></label> 
+                        <label for="">Bathroom:  <span th:text="${bathroom}"></span></label>   
                     </div>
                 </div>
             </section>
@@ -174,7 +180,7 @@ console.log(tot);
             ['Foundation and flooring concrete :' + Math.ceil(tot*0.15),      tot*0.15],
             ['Wall Plastering                  :'+ Math.ceil(tot*0.12),  tot*0.12],
             ['Superstructure(incl. Sunshades, roofing) :'+ Math.ceil(tot*0.14), tot*0.14],
-            ['Ceiling Plastering               :' + Math.ceil(tot*0.2),    tot*0.20],
+            ['Tile Layering Works               :' + Math.ceil(tot*0.2),    tot*0.20],
             ['Painting and putty               :' + Math.ceil(tot *0.18),   tot*0.18],
             ['Carpentering works               :' + Math.ceil(tot*0.1),    tot*0.10],
             ['Electricals and Plumbing         :' + Math.ceil(tot*0.06),    tot*0.06],
@@ -200,5 +206,174 @@ console.log(tot);
         }
   
       </script>
+      <style>
+                .bg{
+            height: 100%;
+        }
+        .te{
+                    display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #484848;
+            width: 50%;
+            border-radius: 25px;
+            padding: 5% 0;
+            font-family: sans-serif;
+            position: relative;
+            left: 24%;
+        }
+        .te h2{
+            font-size: 40px;
+        }
+        .date{
+            display: flex;
+            align-items: center;
+        }
+        .date p{
+            font-size: 14px;
+            padding-right: 15px;
+        }
+        .date input{
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            width: 150px;
+            height: 35px;
+            text-align: center;
+        }
+        .cal{
+            border: none;
+            outline: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            margin-top: 15px;
+            position: relative;
+            left: 30%;
+        }
+    </style>
+    <label hidden th:text="${date}"></label>
+    <div class="te">
+        <h2>Time Estimation</h2>
+        <table>
+            <tr>
+              <th>S.NO</th>
+              <th>Task Description</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Planning</td>
+              <td><span th:text="${dates[0][0]}"></span></td>
+              <td><span th:text="${dates[0][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Raw Material Accumulation</td>
+              <td><span th:text="${dates[1][0]}"></span></td>
+              <td><span th:text="${dates[1][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Footing to Plinth Beam &
+                P.C.C.</td>
+              <td><span th:text="${dates[2][0]}"></span></td>
+              <td><span th:text="${dates[2][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Brickwork to Roof Level</td>
+              <td><span th:text="${dates[3][0]}"></span></td>
+              <td><span th:text="${dates[3][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Roof Slab Casting</td>
+              <td><span th:text="${dates[4][0]}"></span></td>
+              <td><span th:text="${dates[4][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Parapet wall brickwork</td>
+              <td><span th:text="${dates[5][0]}"></span></td>
+              <td><span th:text="${dates[5][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Electrical wall cutting &
+                Chasing</td>
+                <td><span th:text="${dates[6][0]}"></span></td>
+                <td><span th:text="${dates[6][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Plastering Work (Internal)</td>
+              <td><span th:text="${dates[7][0]}"></span></td>
+              <td><span th:text="${dates[7][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Plastering Work (External)</td>
+              <td><span th:text="${dates[8][0]}"></span></td>
+              <td><span th:text="${dates[8][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Tile Laying Work</td>
+              <td><span th:text="${dates[9][0]}"></span></td>
+              <td><span th:text="${dates[9][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Joinery Work</td>
+              <td><span th:text="${dates[10][0]}"></span></td>
+              <td><span th:text="${dates[10][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Weathering course & roof tile
+                laying</td>
+                <td><span th:text="${dates[11][0]}"></span></td>
+                <td><span th:text="${dates[11][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Painting Work (interior &
+                exterior)</td>
+                <td><span th:text="${dates[12][0]}"></span></td>
+                <td><span th:text="${dates[12][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>Electrical Wiring & Switches</td>
+              <td><span th:text="${dates[13][0]}"></span></td>
+              <td><span th:text="${dates[13][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>Plumbing & Sanitary Fixing</td>
+              <td><span th:text="${dates[14][0]}"></span></td>
+              <td><span th:text="${dates[14][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>Final Snag</td>
+              <td><span th:text="${dates[15][0]}"></span></td>
+              <td><span th:text="${dates[15][1]}"></span></td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>Handing Over</td>
+              <td><span th:text="${dates[16][0]}"></span></td>
+            </tr>
+          </table>
+    <div>
+        <form action="/mldashboard">
+            <input type="submit" value="Suggest Me">
+        </form>
+    </div>
+    </div>
+</div>
 </body>
 </html>
