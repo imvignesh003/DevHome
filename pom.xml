@@ -67,6 +67,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<finalName>DevHome</finalName>
 				</configuration>
 			</plugin>
 		</plugins>
